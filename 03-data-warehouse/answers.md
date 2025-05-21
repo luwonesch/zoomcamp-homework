@@ -53,3 +53,18 @@ SELECT
 FROM `data-engineering-course-460007.trips_data_all.green_tripdata_2019`
 WHERE DATE(lpep_pickup_datetime) BETWEEN '2019-01-01' AND '2019-01-31';
 
+## ✅ Question 5
+
+**What is the busiest hour of the day for pickups in January 2019?**  
+**Answer**: `18:00 (6 PM)` with `43,597` trips
+
+**Query:**
+```sql
+SELECT
+  EXTRACT(HOUR FROM lpep_pickup_datetime) AS pickup_hour,
+  COUNT(*) AS num_trips
+FROM `data-engineering-course-460007.trips_data_all.green_tripdata_2019`
+GROUP BY pickup_hour
+ORDER BY num_trips DESC
+LIMIT 1;
+
