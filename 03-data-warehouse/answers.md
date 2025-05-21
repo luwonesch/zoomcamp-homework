@@ -41,3 +41,15 @@ GROUP BY trip_date
 ORDER BY num_trips DESC
 LIMIT 1;
 
+## ✅ Question 4
+
+**What is the number of distinct PULocationID values in January 2019?**  
+**Answer**: `256`
+
+**Query:**
+```sql
+SELECT
+  COUNT(DISTINCT PULocationID) AS num_unique_pulocation_ids
+FROM `data-engineering-course-460007.trips_data_all.green_tripdata_2019`
+WHERE DATE(lpep_pickup_datetime) BETWEEN '2019-01-01' AND '2019-01-31';
+
