@@ -68,3 +68,16 @@ GROUP BY pickup_hour
 ORDER BY num_trips DESC
 LIMIT 1;
 
+## ✅ Question 6
+
+**How much data was scanned when filtering for `2019-01-15` in both versions of the table?**
+
+**Unpartitioned table**: `4.81 MB`  
+**Partitioned table**: `161.63 KB`
+
+**Query (non-partitioned):**
+```sql
+SELECT COUNT(*)
+FROM `data-engineering-course-460007.trips_data_all.green_tripdata_2019`
+WHERE DATE(lpep_pickup_datetime) = '2019-01-15';
+
